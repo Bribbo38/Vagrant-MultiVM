@@ -6,4 +6,6 @@ sudo systemctl restart sshd
 apt-get update -y
 apt-get upgrade -y
 
-apt-get install apache2 -y
+apt-get install apache2 php -y
+
+sudo systemctl restart apache2

@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
     dbconf.vm.network "private_network", ip: "#{BASE_INT_NETWORK}.11", virtualbox__intnet: INTNET_NAME
     
     # Setting up the provisioning scirpts
-    webconf.vm.provision "shell", path: "provision-initial.sh"
+    dbconf.vm.provision "shell", path: "provision-initial.sh"
     dbconf.vm.provision "shell", path: "provision-db-server.sh"
 
     # Configuring the VM in VirtualBox

@@ -25,7 +25,8 @@ Vagrant.configure("2") do |config|
     webconf.vm.network "private_network", ip: "#{BASE_INT_NETWORK}.10", virtualbox__intnet: INTNET_NAME
     webconf.vm.network "private_network", ip: "#{BASE_HOST_ONLY_NETWORK}.10", name: "VirtualBox Host-Only Ethernet Adapter"
 
-    # Setting up a provisioning scirpt
+    # Setting up the provisioning scirpts
+    webconf.vm.provision "shell", path: "provision-initial.sh"
     webconf.vm.provision "shell", path: "provision-web-server.sh"
 
     # Syncing the 'html' folder in the VM
@@ -48,7 +49,8 @@ Vagrant.configure("2") do |config|
     # Network cards configuration (1 intnet)
     dbconf.vm.network "private_network", ip: "#{BASE_INT_NETWORK}.11", virtualbox__intnet: INTNET_NAME
     
-    # Setting up a provisioning scirpt
+    # Setting up the provisioning scirpts
+    webconf.vm.provision "shell", path: "provision-initial.sh"
     dbconf.vm.provision "shell", path: "provision-db-server.sh"
 
     # Configuring the VM in VirtualBox
